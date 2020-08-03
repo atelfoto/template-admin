@@ -1,5 +1,5 @@
 {
-    "name": "your-name-here/Admin",
+    "name": "atelfoto/template-admin",
     "description": "Admin plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
