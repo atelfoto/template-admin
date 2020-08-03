@@ -1,0 +1,229 @@
+{#
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @since         2.0.0
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+#}
+{% set associations = {'BelongsTo': [], 'HasOne': [], 'HasMany': [], 'BelongsToMany': []}|merge(associations) %}
+{% set fieldsData = Bake.getViewFieldsData(fields, schema, associations) %}
+{% set associationFields = fieldsData.associationFields %}
+{% set groupedFields = fieldsData.groupedFields %}
+{% set pK = '$' ~ singularVar ~ '->' ~ primaryKey[0] %}
+<?php  $this->assign('title', " " . ucfirst(__d("admin", "{{ singularHumanName }}")));
+$this->assign('icon', lcfirst('{{ singularHumanName }}'));
+$this->assign('heading', ucfirst('{{ singularHumanName }}'));
+$this->Breadcrumbs->add([
+    ['title' => __d("admin",'{{ singularHumanName }}'), "url" => ['action' => 'index']],
+    ['title' => ucfirst(__d("admin",'{{ action|humanize }}'))]
+]); ?>
+<section class="view content">
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title"><i class="icon-info"></i><?php echo 'Information'; ?></h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa-minus"></i>
+                </button>
+                <?php echo $this->Html->link(
+                    null,
+                    ['action' => 'index'],
+                    [
+                        "class" => 'icon-cancel btn btn-default',
+                        "data-toggle" => 'tooltip',
+                        "data-original-title" => 'Fermer'
+                    ]
+                ); ?>
+            </div>
+        </div>
+        <div class="card-body">
+            <dl class="dl-horizontal">
+{% if groupedFields['string'] %}
+{% for field in groupedFields['string'] %}
+{% if associationFields[field] %}
+{% set details = associationFields[field] %}
+                <dt>
+                    <?= __d('admin','{{ details.property|humanize }}') ?>
+                </dt>
+                <dd>
+                    <?= ${{ singularVar }}->has('{{ details.property }}')
+                    ? $this->Html->link(${{ singularVar }}->{{ details.property }}->{{ details.displayField }},
+                    ['controller' => '{{ details.controller }}', 'action' => 'view', ${{ singularVar }}->{{ details.property }}->{{ details.primaryKey[0] }}])
+                    : ''
+                    ?>
+                </dd>
+{% else %}
+                <dt><?= __d('admin','{{ field|humanize }}') ?></dt>
+                <dd><?= h(${{ singularVar }}->{{ field }}) ?></dd>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if associations.HasOne %}
+{% for alias, details in associations.HasOne %}
+                <dt>
+                  <?= __d('admin', '{{ alias|underscore|singularize|humanize }}') ?>
+                </dt>
+                <dd>
+                    <?= ${{ singularVar }}->has('{{ details.property }}')
+                    ? $this->Html->link(${{ singularVar }}->{{ details.property }}->{{ details.displayField }},
+                    ['controller' => '{{ details.controller }}', 'action' => 'view', ${{ singularVar }}->{{ details.property }}->{{ details.primaryKey[0] }}])
+                    : ''
+                    ?>
+                </dd>
+{% endfor %}
+{% endif %}
+{% if groupedFields.number %}
+{% for field in groupedFields.number %}
+                <dt><?= __d('admin', '{{ field|humanize }}') ?></dt>
+                <dd><?= $this->Number->format(${{ singularVar }}->{{ field }}) ?></dd>
+{% endfor %}
+{% endif %}
+{% if groupedFields.date %}
+{% for field in groupedFields.date %}
+                <dt><?= __d('admin', '{{ field|humanize }}') ?></dt>
+                <dd><?= h(${{ singularVar }}->{{ field }}) ?></dd>
+{% endfor %}
+{% endif %}
+{% if groupedFields.boolean %}
+{% for field in groupedFields.boolean %}
+                <dt><?= __d('admin', '{{ field|humanize }}') ?></dt>
+                <dd><?= ${{ singularVar }}->{{ field }} ? __d('admin', 'Yes') : __d('admin', 'No'); ?></dd>
+{% endfor %}
+{% endif %}
+            </dl>
+        </div>
+    </div>
+{% if groupedFields.text %}
+{% for field in groupedFields.text %}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><i class="icon-doc-text-inv"></i><?= __d('admin', '{{ field|humanize }}') ?></h3>
+            <!--<ul class="nav nav-pills nav-stacked nav-tabs"></ul>-->            
+            <div class="div card-tools">
+                <?php echo $this->Html->link(
+                    null,
+                    ['action' => 'index'],
+                    [
+                        "class" => 'icon-cancel btn btn-default',
+                        "data-toggle" => 'tooltip',
+                        "data-original-title" => 'Fermer'
+                    ]
+                ); ?>
+            </div>
+        </div>
+        <div class="card-body">
+            <?= $this->Text->autoParagraph(${{ singularVar }}->{{ field }}); ?>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}
+{% set relations = associations.BelongsToMany|merge(associations.HasMany) %}
+{% for alias, details in relations %}
+{% set otherSingularVar = alias|variable %}
+{% set otherPluralHumanName = details.controller|underscore|humanize %}
+    <div class="card 1 {{ otherPluralHumanName }}">
+        <div class="card-header">
+            <h3 class="card-title"><i class="icon-share-alt"></i><?= __d('admin', '{{ otherPluralHumanName }}') ?></h3>
+            <div class="card-tools">
+                <!-- <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"> -->
+                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            <?php if (!empty(${{ singularVar }}->{{ details.property }})): ?>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+{% for field in details.fields %}
+                            <th scope="col"><?= __d('admin', '{{ field|humanize }}') ?></th>
+{% endfor %}
+                            <th class="online">online</th>
+                            <th scope="col" colspan="3" class="actions"><?= __d('admin', 'Actions') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach (${{ singularVar }}->{{ details.property }} as ${{ otherSingularVar }}):
+                    ?>
+                    <tr>
+{% for field in details.fields %}
+                        <td><?= h(${{ otherSingularVar }}->{{ field }}) ?></td>
+{% endfor %}
+{% set otherPk = '$' ~ otherSingularVar ~ '->' ~ details.primaryKey[0] %}
+                        <td class="online">
+                            <?php if (${{ otherSingularVar }}->online): ?>
+                            <?php echo $this->Html->link(
+                                    __d('admin', 'enable'),
+                                [
+                                    'action' => 'online', {{ otherPk|raw }}, ${{ otherSingularVar }}->online
+                                ],
+                                [
+                                    'class' => 'active',
+                                    'data-toggle' => 'tooltip', 
+                                    "data-original-title" => 'Clic pour Désactiver'
+                                ]
+                            );?>
+                            <?php else: ?>
+                            <?php echo $this->Html->link(
+                                __d('admin', 'Inactive'),
+                                [
+                                    'action' => 'online', {{ otherPk|raw }}, ${{ otherSingularVar }}->online
+                                ],
+                                [
+                                    'class' => 'inactive',
+                                    'data-toggle' => 'tooltip', 
+                                    "data-original-title" => "Clic pour Activer"
+                                ]
+                            );
+                            endif; ?>
+                        </td>
+                        <td class="actions">
+                            <?= $this->Html->link(
+                                null,
+                            ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}],
+                            [
+                                'class'=>'icon-eye btn btn-outline-dark',
+                                'data-toggle' => 'tooltip',
+                                "data-original-title" => __d('admin', "view")
+                            ]) ?>
+                        </td>
+                        <td>
+                            <?= $this->Html->link(
+                                null,
+                            ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}],
+                            [
+                            'class'=>'icon-pencil btn btn-outline-dark ',
+                            'data-toggle' => 'tooltip',
+                            "data-original-title" => __d('admin', "Edit")
+                            ]) ?>
+                        </td>
+                        <td>
+                            <?= $this->Form->postLink(
+                                null,
+                            ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}],
+                            [
+                            'confirm' => __d('admin', 'Are you sure you want to delete # {0}?', 
+                            {{ otherPk|raw }}), 
+                            'class'=>'icon-trash-empty btn btn-outline-dark',
+                            'data-toggle' => 'tooltip',
+                            "data-original-title" => __d('admin', "Delete")
+                            ]
+                            ); ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endif; ?>
+        </div>
+    </div>
+{% endfor %}
+</section>

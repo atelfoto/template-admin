@@ -1,0 +1,31 @@
+{% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+{% set belongsToMany = Bake.aliasExtractor(modelObj, 'belongsToMany') %}
+{% set compact = ["'#{singularName}'"] %}
+    /**
+     * Enable description
+     * @param  string|null $id {{ singularHumanName }} id.
+     * @return \Cake\Http\Response|void
+     */
+    public function enable($id = null)
+    {
+        ${{ singularName }} = $this->{{ currentModelName }}->get($id, [
+            'contain' => []
+        ]);
+        if (!$id && empty(${{ singularName }})) {
+            $this->Flash->error(__d('admin', 'You must provide a valid ID number to enable this.'));
+            $this->redirect(['action' => 'index']);
+        }
+        if (!empty(${{ singularName }})) {
+            ${{ singularName }}['online'] = 1;
+            if ($this->{{ currentModelName }}->save(${{ singularName }})) {
+                $this->Flash->success(__d("admin", 'This ID {0} has been enabled.', h($id)));
+
+            } else {
+                $this->Flash->error(__d("admin", 'This ID {0} was not enabled.', h($id)));
+            }
+            $this->redirect(['action' => 'index']);
+        } else {
+            $this->Flash->error(__d("admin", 'This ID {0} could not be enabled. Please, try again.', h($id)));
+            $this->redirect(['action' => 'index']);
+        }
+    }

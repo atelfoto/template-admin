@@ -1,0 +1,25 @@
+{% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+{% set belongsToMany = Bake.aliasExtractor(modelObj, 'belongsToMany') %}
+{% set compact = ["'#{singularName}'"] %}
+    /**
+     * online description
+     *
+     * @param string|null $id {{ singularHumanName }} id.
+     * @param bool $online {{ singularHumanName}} online
+     * @return \Cake\Http\Response|null Redirects on successful online, renders view otherwise.
+     */
+    public function online($id = null, $online = null)
+    {
+        ${{ singularName }} = $this->{{ currentModelName }}->get($id);
+        if ($online == 1) {
+            ${{ singularName }}->online = 0;
+        } else {
+            ${{ singularName }}->online = 1;
+        }
+
+        if ($this->{{ currentModelName }}->save(${{ singularName }})) {
+            $this->Flash->success(__d('admin', "This has been changed"));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }

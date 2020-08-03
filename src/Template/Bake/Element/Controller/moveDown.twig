@@ -1,0 +1,21 @@
+{% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+{% set belongsToMany = Bake.aliasExtractor(modelObj, 'belongsToMany') %}
+{% set compact = ["'#{singularName}'"] %}
+
+    /**
+     * [moveDown description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function moveDown($id = null)
+    {
+        $this->request->allowMethod(['post', 'put']);
+        ${{ singularName }} = $this->{{ currentModelName }}->get($id);
+        if ($this->{{ currentModelName }}->moveDown(${{ singularName }})) {
+            $this->Flash->success(__d('admin', 'This has been moved down.'));
+        } else {
+            $this->Flash->error(__d('admin', 'This could not be moved down. Please, try again.'));
+        }
+
+        return $this->redirect($this->referer(['action' => 'index']));
+    }
