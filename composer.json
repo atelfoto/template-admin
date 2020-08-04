@@ -3,6 +3,9 @@
     "description": "Admin plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
+    "support": {
+        "source": "https://github.com/atelfoto/template-admin"
+    },
     "require": {
         "cakephp/cakephp": "^3.5"
     },
