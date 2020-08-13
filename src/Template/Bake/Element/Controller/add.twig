@@ -25,7 +25,7 @@
         ${{ singularName }} = $this->{{ currentModelName }}->newEntity();
         if ($this->request->is('post')) {
             ${{ singularName }} = $this->{{ currentModelName }}->patchEntity(${{ singularName }}, $this->request->getData());
-            ${{ singularName }}->user_id = $this->Auth->user('id');
+           // ${{ singularName }}->user_id = $this->Auth->user('id');
             if ($this->{{ currentModelName }}->save(${{ singularName }})) {
                 $this->Flash->success(__d('admin', 'The {0} has been saved.', '{{ singularHumanName }}'));
 

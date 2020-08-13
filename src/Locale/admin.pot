@@ -1,0 +1,44 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2020-08-11 22:29+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Template/Element/breadcrumb.ctp:13
+msgid "dashboard"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:28
+msgid "user image"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:33
+msgid "member since"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:40
+msgid "profile"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:46
+msgid "logout"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:55
+msgid "help"
+msgstr ""
+
+#: Template/Element/paginator.ctp:13
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+

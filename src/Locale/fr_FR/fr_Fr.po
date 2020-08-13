@@ -1,0 +1,48 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2020-08-11 22:29+0000\n"
+"PO-Revision-Date: 2020-08-12 00:38+0200\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: \n"
+"Language: fr_FR\n"
+
+#: Template/Element/breadcrumb.ctp:13
+msgid "dashboard"
+msgstr "tableau de bord"
+
+#: Template/Element/nav-top.ctp:28
+msgid "user image"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:33
+msgid "member since"
+msgstr "membre depuis"
+
+#: Template/Element/nav-top.ctp:40
+msgid "profile"
+msgstr "profile"
+
+#: Template/Element/nav-top.ctp:46
+msgid "logout"
+msgstr "Déconnexion"
+
+#: Template/Element/nav-top.ctp:55
+msgid "help"
+msgstr "aide"
+
+#: Template/Element/paginator.ctp:13
+msgid ""
+"Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} "
+"total"
+msgstr ""
+"Page {{page}} sur {{pages}}, actuellement {{current}} enregistrement(s) "
+"sur {{count}} au total"

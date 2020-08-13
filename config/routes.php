@@ -7,6 +7,7 @@ Router::plugin(
     'Admin',
     ['path' => '/admin'],
     function (RouteBuilder $routes) {
+        // $routes->get('/Menus', ['controller' => 'Menus']);
         $routes->fallbacks(DashedRoute::class);
     }
 );
