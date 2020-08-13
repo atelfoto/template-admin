@@ -183,6 +183,7 @@ and this
 ```bash
  mkdir -p src/Template/Admin && mkdir -p src/Template/Admin/Helps
  cp -R vendor/atelfoto/template-admin/src/Template/Admin/Helps/* src/Template/Admin/Helps/
+ ```
 
 
 
