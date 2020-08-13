@@ -180,6 +180,12 @@ and this
 
 <td><?= h($menu->online); ?></td>
 ```
+```bash
+ mkdir -p src/Template/Admin && mkdir -p src/Template/Admin/Helps
+ cp -R vendor/atelfoto/template-admin/src/Template/Admin/Helps/* src/Template/Admin/Helps/
+
+
+
 ### Page Menus
 
 ![Page menus](docs/menus.jpg)
