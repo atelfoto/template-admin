@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Model\Table;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,18 +9,18 @@ use Cake\Validation\Validator;
 /**
  * Menus Model
  *
- * @property \Admin\Model\Table\MenusTable&\Cake\ORM\Association\BelongsTo $ParentMenus
- * @property \Admin\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- * @property \Admin\Model\Table\MenusTable&\Cake\ORM\Association\HasMany $ChildMenus
+ * @property \App\Model\Table\MenusTable&\Cake\ORM\Association\BelongsTo $ParentMenus
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\MenusTable&\Cake\ORM\Association\HasMany $ChildMenus
  *
- * @method \Admin\Model\Entity\Menu get($primaryKey, $options = [])
- * @method \Admin\Model\Entity\Menu newEntity($data = null, array $options = [])
- * @method \Admin\Model\Entity\Menu[] newEntities(array $data, array $options = [])
- * @method \Admin\Model\Entity\Menu|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \Admin\Model\Entity\Menu saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \Admin\Model\Entity\Menu patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \Admin\Model\Entity\Menu[] patchEntities($entities, array $data, array $options = [])
- * @method \Admin\Model\Entity\Menu findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Menu get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Menu newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Menu[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Menu|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Menu saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Menu patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Menu[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Menu findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  * @mixin \Cake\ORM\Behavior\TreeBehavior
@@ -45,15 +45,14 @@ class MenusTable extends Table
         $this->addBehavior('Tree');
 
         $this->belongsTo('ParentMenus', [
-            'className' => 'Admin.Menus',
+            'className' => 'Menus',
             'foreignKey' => 'parent_id',
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-            'className' => 'Admin.Users',
         ]);
         $this->hasMany('ChildMenus', [
-            'className' => 'Admin.Menus',
+            'className' => 'Menus',
             'foreignKey' => 'parent_id',
         ]);
     }

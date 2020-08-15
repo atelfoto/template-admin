@@ -1,14 +1,14 @@
 <?php
-namespace Admin\Controller\Admin;
+namespace App\Controller\Admin;
 
-use Admin\Controller\AppController;
+use App\Controller\AppController;
 
 /**
  * Menus Controller
  *
- * @property \Admin\Model\Table\MenusTable $Menus
+ * @property \App\Model\Table\MenusTable $Menus
  *
- * @method \Admin\Model\Entity\Menu[] \Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Menu[] \Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class MenusController extends AppController
 {
@@ -26,7 +26,7 @@ class MenusController extends AppController
             ->where(
                 [
                     'Or' => [
-                        'Menus.name like' => '%' . $key . '%' 
+                        'Menus.name like' => '%' . $key . '%'
                     ]
                 ]
             );
@@ -43,6 +43,21 @@ class MenusController extends AppController
         $this->set(compact('menus'));
     }
 
+    /**
+     * View method
+     *
+     * @param string|null $id Menu id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $menu = $this->Menus->get($id, [
+            'contain' => ['ParentMenus', 'Users', 'ChildMenus'],
+        ]);
+
+        $this->set('menu', $menu);
+    }
 
     /**
      * Add method
@@ -62,7 +77,12 @@ class MenusController extends AppController
             }
             $this->Flash->error(__d('admin', 'The {0} could not be saved. Please, try again.', 'Menu'));
         }
-        $parentMenus = $this->Menus->ParentMenus->find('list', ['limit' => 200]);
+        $parentMenus = $this->Menus->ParentMenus->find(
+            'treeList',
+            [
+                'spacer' => "---- ",
+            ]
+        );
         $users = $this->Menus->Users->find('list', ['limit' => 200]);
         $this->set(compact('menu', 'parentMenus', 'users'));
     }
@@ -88,7 +108,12 @@ class MenusController extends AppController
             }
             $this->Flash->error(__d('admin', 'The {0} could not be saved. Please, try again.', 'Menu'));
         }
-        $parentMenus = $this->Menus->ParentMenus->find('list', ['limit' => 200]);
+        $parentMenus = $this->Menus->ParentMenus->find(
+            'treeList',
+            [
+                'spacer' => "---- ",
+            ]
+        );
         $users = $this->Menus->Users->find('list', ['limit' => 200]);
         $this->set(compact('menu', 'parentMenus', 'users'));
     }
@@ -132,6 +157,42 @@ class MenusController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+
+    /**
+     * [moveUp description]
+     * @param  [type] $id id
+     * @return void
+     */
+    public function moveUp($id = null)
+    {
+        $this->request->allowMethod(['post', 'put']);
+        $menu = $this->Menus->get($id);
+        if ($this->Menus->moveUp($menu)) {
+            $this->Flash->success(__d('admin', 'This has been moved Up.'));
+        } else {
+            $this->Flash->error(__d('admin', 'This could not be moved up. Please, try again.'));
+        }
+
+        return $this->redirect($this->referer(['action' => 'index']));
+    }
+
+    /**
+     * [moveDown description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function moveDown($id = null)
+    {
+        $this->request->allowMethod(['post', 'put']);
+        $menu = $this->Menus->get($id);
+        if ($this->Menus->moveDown($menu)) {
+            $this->Flash->success(__d('admin', 'This has been moved down.'));
+        } else {
+            $this->Flash->error(__d('admin', 'This could not be moved down. Please, try again.'));
+        }
+
+        return $this->redirect($this->referer(['action' => 'index']));
+    }
     /**
      * online description
      *

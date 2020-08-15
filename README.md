@@ -141,6 +141,10 @@ use Cake\Utility\Inflector;
         return ucfirst($name);
     }
 ```
+or you can take this
+```bash
+cp -R vendor/atelfoto/template-admin/src/Model/* src/Model/
+```
 
 #### Controller Menus
 
@@ -149,7 +153,7 @@ use Cake\Utility\Inflector;
 
 bin/cake bake controller Menus --actions index,view,add,edit,delete,deleteAll,moveUp,moveDown,online, --prefix admin -t Admin
 ```
-in controller/admin/MenusController.php change this
+in controller/admin/MenusController.php in the action Add and edit change this
 ```
 $parentMenus = $this->Menus->ParentMenus->find('list', ['limit' => 200]);
 ```
@@ -162,31 +166,41 @@ $parentMenus = $this->Menus->ParentMenus->find(
             ]
         );
 ```
+Or you can take this
+```
+cp -r vendor/atelfoto/template-admin/src/Controller/Admin/* src/Controller/Admin/
+```
 
 #### Template Menus
 
 ```
 bin/cake bake template Menus --prefix admin -t Admin
 ```
-remove this
+delete this
 ```php
-//template/Admin/Menus/add.ctp
+//template/Admin/Menus/add.ctp in line 80
+//and
+//template/Admin/Menus/add.ctp in line 111
 echo $this->Form->control('controller');
 echo $this->Form->control('online');
 ```
-and this
+and this in line 51
 ```php
 //Template/Admin/Menus/index.ctp
 
 <td><?= h($menu->online); ?></td>
 ```
+or you can take this
+
 ```bash
- mkdir -p src/Template/Admin && mkdir -p src/Template/Admin/Helps
- cp -R vendor/atelfoto/template-admin/src/Template/Admin/Helps/* src/Template/Admin/Helps/
-
-
+ mkdir -p src/Template/Admin &&
+ cp -R vendor/atelfoto/template-admin/src/Template/Admin/* src/Template/Admin/
+```
 
 ### Page Menus
 
 ![Page menus](docs/menus.jpg)
 
+![Page menus](docs/add.jpg)
+
+![Page menus](docs/mobile.jpg)

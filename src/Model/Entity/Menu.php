@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Model\Entity;
+namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\Utility\Inflector;
@@ -22,9 +22,9 @@ use Cake\Utility\Inflector;
  * @property \Cake\I18n\FrozenTime $modified
  * @property bool $online
  *
- * @property \Admin\Model\Entity\ParentMenu $parent_menu
- * @property \Admin\Model\Entity\User $user
- * @property \Admin\Model\Entity\ChildMenu[] $child_menus
+ * @property \App\Model\Entity\ParentMenu $parent_menu
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\ChildMenu[] $child_menus
  */
 class Menu extends Entity
 {
