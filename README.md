@@ -43,6 +43,7 @@ bin/cake plugin load Admin
 
 Router::prefix('admin', function ($routes)
 {
+    $routes->connect('/', ['controller' => 'Dashboards', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
 ```
@@ -98,6 +99,13 @@ Configure::load('app', 'default', false);
 ```bash
 bin/cake migrations migrate -p Admin
 bin/cake migrations seed -p Admin
+
+```
+or each seed
+```bake
+bin/cake migrations seed --seed UsersSeed -p Admin
+bin/cake migrations seed --seed UsersSeed -p Admin
+bin/cake migrations seed --seed UsersSeed -p Admin
 
 ```
 

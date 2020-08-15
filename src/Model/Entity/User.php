@@ -10,16 +10,14 @@ use Cake\ORM\Entity;
  * @property string $username
  * @property string $password
  * @property string $email
- * @property string|null $first_name
- * @property string $lastname
- * @property string|null $role
- * @property string|null $passkey
- * @property \Cake\I18n\FrozenTime $timeout
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $role
  * @property \Cake\I18n\FrozenTime $modified
  * @property \Cake\I18n\FrozenTime $created
+ * @property bool $online
  *
- * @property \App\Model\Entity\Bookmark[] $bookmarks
- * @property \App\Model\Entity\PhoneNumber[] $phone_numbers
+ * @property \App\Model\Entity\Menu[] $menus
  */
 class User extends Entity
 {
@@ -37,14 +35,12 @@ class User extends Entity
         'password' => true,
         'email' => true,
         'first_name' => true,
-        'lastname' => true,
+        'last_name' => true,
         'role' => true,
-        'passkey' => true,
-        'timeout' => true,
         'modified' => true,
         'created' => true,
-        'bookmarks' => true,
-        'phone_numbers' => true,
+        'online' => true,
+        'menus' => true,
     ];
 
     /**

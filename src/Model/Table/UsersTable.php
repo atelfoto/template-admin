@@ -9,8 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\BookmarksTable&\Cake\ORM\Association\HasMany $Bookmarks
- * @property \App\Model\Table\PhoneNumbersTable&\Cake\ORM\Association\HasMany $PhoneNumbers
+ * @property \App\Model\Table\MenusTable&\Cake\ORM\Association\HasMany $Menus
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -41,10 +40,7 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Bookmarks', [
-            'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('PhoneNumbers', [
+        $this->hasMany('Menus', [
             'foreignKey' => 'user_id',
         ]);
     }
@@ -63,13 +59,13 @@ class UsersTable extends Table
 
         $validator
             ->scalar('username')
-            ->maxLength('username', 15)
+            ->maxLength('username', 255)
             ->requirePresence('username', 'create')
             ->notEmptyString('username');
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 61)
+            ->maxLength('password', 255)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
@@ -80,29 +76,26 @@ class UsersTable extends Table
 
         $validator
             ->scalar('first_name')
-            ->maxLength('first_name', 30)
-            ->allowEmptyString('first_name');
+            ->maxLength('first_name', 255)
+            ->requirePresence('first_name', 'create')
+            ->notEmptyString('first_name');
 
         $validator
-            ->scalar('lastname')
-            ->maxLength('lastname', 30)
-            ->requirePresence('lastname', 'create')
-            ->notEmptyString('lastname');
+            ->scalar('last_name')
+            ->maxLength('last_name', 255)
+            ->requirePresence('last_name', 'create')
+            ->notEmptyString('last_name');
 
         $validator
             ->scalar('role')
-            ->maxLength('role', 8)
-            ->allowEmptyString('role');
+            ->maxLength('role', 255)
+            ->requirePresence('role', 'create')
+            ->notEmptyString('role');
 
         $validator
-            ->scalar('passkey')
-            ->maxLength('passkey', 13)
-            ->allowEmptyString('passkey');
-
-        $validator
-            ->dateTime('timeout')
-            ->requirePresence('timeout', 'create')
-            ->notEmptyDateTime('timeout');
+            ->boolean('online')
+            ->requirePresence('online', 'create')
+            ->notEmptyString('online');
 
         return $validator;
     }
