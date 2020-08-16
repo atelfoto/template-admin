@@ -30,14 +30,6 @@ $a_name = $this->request->getParam('action');
                             </a>
                         </li>
                     <?php endif ?>
-                    <?php if (($menu->controller == "Articles")) : ?>
-                        <li class="nav-item has-treeview">
-                            <a class="nav-link <?php if ($c_name == $menu->controller && $a_name == 'edit') : ?> active <?php endif; ?>" href="<?= $this->Url->build(['controller' => "Articles" , 'action' => 'edit', 1]); ?>">
-                                <i class="nav-icon icon-info"></i>
-                                <p> Mentions Légales</p>
-                            </a>
-                        </li>
-                    <?php endif ?>
                     <?php if ($menu->controller !== "Dashboards" && $menu->controller !== 'Homes') : ?>
                         <li class="nav-item has-treeview">
                             <a class="nav-link <?php if ($c_name == $menu->controller && $a_name == 'add') : ?> active <?php endif; ?>" href="<?= $this->Url->build(['controller' => $menu->controller, 'action' => 'add']); ?>">

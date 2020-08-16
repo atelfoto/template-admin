@@ -37,7 +37,7 @@ class HelpsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-        $this->addBehavior('Sluggable.Sluggable');
+        $this->addBehavior('Admin.Sluggable');
     }
 
     /**

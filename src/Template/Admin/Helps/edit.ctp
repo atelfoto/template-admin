@@ -96,15 +96,57 @@ $this->Breadcrumbs->add([
 <?php
 $this->append('scriptBottom');
 // echo  $this->Html->script("tinymce/tinymce");
+echo $this->Html->script('admin/textarea.min');
+?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/search/search.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/search/searchcursor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/search/jump-to-line.min.js"></script>
+<?php
+echo $this->Html->script('admin/browser');
 ?>
 <script>
+    $(document).ready(function() {
+        $('#content').summernote({
+            lang: 'fr-FR',
+            codemirror: {
+                theme: 'monokai',
+                lineNumbers: true,
+                mode: 'xml',
+                lineWrapping: true,
+                tabSize: 4,
+                autoCloseTags: true,
+                spellcheck: true,
+                extraKeys: {
+                    'Tab': 'emmetExpandAbbreviation',
+                    'Esc': 'emmetResetAbbreviation',
+                    'Enter': 'emmetInsertLineBreak'
+                }
+            }
+        });
+        // editor.setSize('500','250');
+    });
     $(function() {
         $('#online').bootstrapToggle({
+            // size: 'small',
             on: 'En ligne',
             off: 'Hors ligne',
             onstyle: 'success',
             offstyle: 'danger',
         });
     });
+    $('#description').keyup(function() {
+        var nombreCaractere = $(this).val().length;
+        var nombreMots = jQuery.trim($(this).val()).split(' ').length;
+        if ($(this).val() === '') {
+            nombreMots = 0;
+        }
+        var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 250';
+        $('#compteur').text(msg);
+        if (nombreCaractere > 220) {
+            $('#compteur').addClass("mauvais");
+        } else {
+            $('#compteur').removeClass("mauvais");
+        }
+    })
 </script>
 <?php $this->end(); ?>

@@ -45,7 +45,7 @@ $this->Breadcrumbs->add([
                     <a href="#publication" data-toggle="tab" class="nav-link" role="tab" aria-selected="false">
                         Publication
                     </a>
-                </li>                
+                </li>
                 <li class="nav-item">
                     <a class="btn btn-default icon-info" data-toggle="tooltip" data-original-title="Pour les publication dans Google et les Reseaux Sociaux"></a>
                 </li>
@@ -55,8 +55,8 @@ $this->Breadcrumbs->add([
                 <?= $this->Form->button(__d('admin', 'Submit'), [
                 'templateVars' => ['1' => 'primary icon-floppy']
                 ]) ?>
-                <?php echo $this->Html->link(null, 
-                    ['action' => 'index'], 
+                <?php echo $this->Html->link(null,
+                    ['action' => 'index'],
                     [
                         "class" => 'icon-cancel btn btn-default',
                         "data-toggle" => 'tooltip',
@@ -135,9 +135,33 @@ $this->Breadcrumbs->add([
 </section>
 <?php
 $this->append('scriptBottom');
-// echo  $this->Html->script("tinymce/tinymce");
+// echo  $this->Html->script("admin/textarea");
 ?>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/search/search.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/search/searchcursor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/search/jump-to-line.min.js"></script> -->
+<?php // echo $this->Html->script('admin/browser'); ;?>
 <script>
+// $(document).ready(function() {
+//         $('#content').summernote({
+//             lang: 'fr-FR',
+//             codemirror: {
+//                 theme: 'monokai',
+//                 lineNumbers: true,
+//                 mode: 'xml',
+//                 lineWrapping: true,
+//                 tabSize: 4,
+//                 autoCloseTags: true,
+//                 spellcheck: true,
+//                 extraKeys: {
+//                     'Tab': 'emmetExpandAbbreviation',
+//                     'Esc': 'emmetResetAbbreviation',
+//                     'Enter': 'emmetInsertLineBreak'
+//                 }
+//             }
+//         });
+//         // editor.setSize('500','250');
+//     });
 $(function() {
     $('#online').bootstrapToggle({
         // size: 'small',
@@ -153,7 +177,7 @@ $('#description').keyup(function() {
         if ($(this).val() === '') {
             nombreMots = 0;
         }
-        var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 250';
+        var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 220';
         $('#compteur').text(msg);
         if (nombreCaractere > 220) {
             $('#compteur').addClass("mauvais");
@@ -161,6 +185,5 @@ $('#description').keyup(function() {
             $('#compteur').removeClass("mauvais");
         }
     })
-
 </script>
 <?php $this->end(); ?>

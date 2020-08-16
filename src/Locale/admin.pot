@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2020-08-11 22:29+0000\n"
+"POT-Creation-Date: 2020-08-15 20:18+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,28 +14,420 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Template/Element/breadcrumb.ctp:13
+#: Controller/Admin/HelpsController.php:72
+#: Controller/Admin/HelpsController.php:96
+#: Controller/Admin/MenusController.php:74
+#: Controller/Admin/MenusController.php:105
+#: Controller/Admin/UsersController.php:72
+#: Controller/Admin/UsersController.php:96
+msgid "The {0} has been saved."
+msgstr ""
+
+#: Controller/Admin/HelpsController.php:76
+#: Controller/Admin/HelpsController.php:100
+#: Controller/Admin/MenusController.php:78
+#: Controller/Admin/MenusController.php:109
+#: Controller/Admin/UsersController.php:76
+#: Controller/Admin/UsersController.php:100
+msgid "The {0} could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/HelpsController.php:118
+#: Controller/Admin/MenusController.php:134
+#: Controller/Admin/UsersController.php:118
+msgid "The {0} has been deleted."
+msgstr ""
+
+#: Controller/Admin/HelpsController.php:120
+#: Controller/Admin/MenusController.php:136
+#: Controller/Admin/UsersController.php:120
+msgid "The {0} could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/HelpsController.php:138
+#: Controller/Admin/MenusController.php:154
+#: Controller/Admin/UsersController.php:138
+msgid "These have been deleted"
+msgstr ""
+
+#: Controller/Admin/HelpsController.php:161
+#: Controller/Admin/MenusController.php:213
+#: Controller/Admin/UsersController.php:161
+msgid "This has been changed"
+msgstr ""
+
+#: Controller/Admin/MenusController.php:171
+msgid "This has been moved Up."
+msgstr ""
+
+#: Controller/Admin/MenusController.php:173
+msgid "This could not be moved up. Please, try again."
+msgstr ""
+
+#: Controller/Admin/MenusController.php:189
+msgid "This has been moved down."
+msgstr ""
+
+#: Controller/Admin/MenusController.php:191
+msgid "This could not be moved down. Please, try again."
+msgstr ""
+
+#: Template/Admin/Dashboards/index.ctp:1
+#: Template/Element/breadcrumb.ctp:11
 msgid "dashboard"
 msgstr ""
 
-#: Template/Element/nav-top.ctp:28
+#: Template/Admin/Dashboards/index.ctp:8
+msgid "Dashboard"
+msgstr ""
+
+#: Template/Admin/Helps/add.ctp:9
+#: Template/Admin/Helps/edit.ctp:9
+#: Template/Element/nav-top.ctp:59
+msgid "help"
+msgstr ""
+
+#: Template/Admin/Helps/add.ctp:11
+#: Template/Admin/Helps/add.ctp:14
+#: Template/Admin/Helps/index.ctp:24
+#: Template/Admin/Menus/add.ctp:10
+#: Template/Admin/Menus/add.ctp:13
+#: Template/Admin/Menus/index.ctp:24
+#: Template/Admin/Users/add.ctp:10
+#: Template/Admin/Users/add.ctp:13
+#: Template/Admin/Users/index.ctp:22
+msgid "Add"
+msgstr ""
+
+#: Template/Admin/Helps/add.ctp:13
+#: Template/Admin/Helps/edit.ctp:13
+msgid "helps"
+msgstr ""
+
+#: Template/Admin/Helps/add.ctp:32
+#: Template/Admin/Helps/add.ctp:57
+#: Template/Admin/Helps/edit.ctp:40
+#: Template/Admin/Helps/edit.ctp:89
+#: Template/Admin/Menus/add.ctp:43
+#: Template/Admin/Menus/add.ctp:94
+#: Template/Admin/Menus/edit.ctp:44
+#: Template/Admin/Menus/edit.ctp:96
+#: Template/Admin/Users/add.ctp:44
+#: Template/Admin/Users/add.ctp:96
+#: Template/Admin/Users/edit.ctp:44
+#: Template/Admin/Users/edit.ctp:96
+msgid "Submit"
+msgstr ""
+
+#: Template/Admin/Helps/edit.ctp:11
+#: Template/Admin/Helps/edit.ctp:14
+#: Template/Admin/Menus/edit.ctp:10
+#: Template/Admin/Menus/edit.ctp:13
+#: Template/Admin/Menus/view.ctp:171
+#: Template/Admin/Users/edit.ctp:10
+#: Template/Admin/Users/edit.ctp:13
+#: Template/Admin/Users/view.ctp:147
+msgid "Edit"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:8
+#: Template/Admin/Helps/index.ctp:10
+msgid "Helps"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:37
+#: Template/Admin/Menus/index.ctp:37
+#: Template/Admin/Users/index.ctp:34
+msgid "Delete All"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:46
+#: Template/Admin/Menus/index.ctp:52
+#: Template/Admin/Menus/view.ctp:106
+#: Template/Admin/Users/index.ctp:47
+#: Template/Admin/Users/view.ctp:82
+msgid "Actions"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:61
+#: Template/Admin/Menus/index.ctp:113
+#: Template/Admin/Users/index.ctp:67
+msgid "Active"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:68
+#: Template/Admin/Menus/index.ctp:120
+#: Template/Admin/Users/index.ctp:74
+msgid "disable"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:73
+#: Template/Admin/Menus/index.ctp:125
+#: Template/Admin/Menus/view.ctp:142
+#: Template/Admin/Users/index.ctp:79
+#: Template/Admin/Users/view.ctp:118
+msgid "Inactive"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:80
+#: Template/Admin/Menus/index.ctp:132
+#: Template/Admin/Menus/view.ctp:130
+#: Template/Admin/Users/index.ctp:86
+#: Template/Admin/Users/view.ctp:106
+msgid "enable"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:92
+#: Template/Admin/Helps/view.ctp:19
+#: Template/Admin/Menus/index.ctp:144
+#: Template/Admin/Users/index.ctp:96
+msgid "edit"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:102
+#: Template/Admin/Menus/index.ctp:154
+#: Template/Admin/Menus/view.ctp:179
+#: Template/Admin/Users/index.ctp:105
+#: Template/Admin/Users/view.ctp:155
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Admin/Helps/index.ctp:105
+#: Template/Admin/Menus/index.ctp:157
+#: Template/Admin/Menus/view.ctp:183
+#: Template/Admin/Users/index.ctp:108
+#: Template/Admin/Users/view.ctp:159
+msgid "Delete"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:1
+#: Template/Admin/Helps/view.ctp:5
+msgid "Help"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:6
+#: Template/Admin/Menus/view.ctp:6
+#: Template/Admin/Users/view.ctp:6
+msgid "View"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:35
+#: Template/Admin/Menus/view.ctp:29
+#: Template/Admin/Menus/view.ctp:92
+#: Template/Admin/Users/view.ctp:68
+msgid "Name"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:37
+msgid "Slug"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:39
+#: Template/Admin/Menus/view.ctp:61
+#: Template/Admin/Menus/view.ctp:91
+#: Template/Admin/Users/view.ctp:41
+#: Template/Admin/Users/view.ctp:67
+msgid "Id"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:41
+#: Template/Admin/Menus/view.ctp:67
+#: Template/Admin/Menus/view.ctp:102
+#: Template/Admin/Users/view.ctp:45
+#: Template/Admin/Users/view.ctp:78
+msgid "Created"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:43
+#: Template/Admin/Menus/view.ctp:69
+#: Template/Admin/Menus/view.ctp:103
+#: Template/Admin/Users/view.ctp:43
+#: Template/Admin/Users/view.ctp:79
+msgid "Modified"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:45
+#: Template/Admin/Menus/view.ctp:71
+#: Template/Admin/Menus/view.ctp:104
+#: Template/Admin/Users/view.ctp:47
+#: Template/Admin/Users/view.ctp:80
+msgid "Online"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:46
+#: Template/Admin/Menus/view.ctp:72
+#: Template/Admin/Users/view.ctp:48
+msgid "Yes"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:46
+#: Template/Admin/Menus/view.ctp:72
+#: Template/Admin/Users/view.ctp:48
+msgid "No"
+msgstr ""
+
+#: Template/Admin/Helps/view.ctp:52
+msgid "Content"
+msgstr ""
+
+#: Template/Admin/Menus/add.ctp:8
+#: Template/Admin/Menus/edit.ctp:8
+msgid "menu"
+msgstr ""
+
+#: Template/Admin/Menus/add.ctp:12
+#: Template/Admin/Menus/edit.ctp:12
+msgid "menus"
+msgstr ""
+
+#: Template/Admin/Menus/index.ctp:8
+#: Template/Admin/Menus/index.ctp:10
+#: Template/Admin/Menus/view.ctp:78
+#: Template/Admin/Users/view.ctp:54
+msgid "Menus"
+msgstr ""
+
+#: Template/Admin/Menus/index.ctp:82
+msgid "move Down"
+msgstr ""
+
+#: Template/Admin/Menus/index.ctp:95
+msgid "move Up"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:1
+#: Template/Admin/Menus/view.ctp:5
+msgid "Menu"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:31
+#: Template/Admin/Menus/view.ctp:93
+#: Template/Admin/Users/view.ctp:69
+msgid "Alias"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:33
+#: Template/Admin/Menus/view.ctp:94
+#: Template/Admin/Users/view.ctp:70
+msgid "Controller"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:36
+msgid "Parent Menu"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:46
+#: Template/Admin/Users/view.ctp:1
+#: Template/Admin/Users/view.ctp:5
+msgid "User"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:55
+#: Template/Admin/Menus/view.ctp:99
+#: Template/Admin/Users/view.ctp:75
+msgid "Description"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:57
+#: Template/Admin/Menus/view.ctp:100
+#: Template/Admin/Users/view.ctp:76
+msgid "Robots"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:59
+#: Template/Admin/Menus/view.ctp:101
+#: Template/Admin/Users/view.ctp:77
+msgid "Keywords"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:63
+#: Template/Admin/Menus/view.ctp:96
+#: Template/Admin/Users/view.ctp:72
+msgid "Lft"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:65
+#: Template/Admin/Menus/view.ctp:97
+#: Template/Admin/Users/view.ctp:73
+msgid "Rght"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:95
+#: Template/Admin/Users/view.ctp:71
+msgid "Parent Id"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:98
+#: Template/Admin/Users/view.ctp:74
+msgid "User Id"
+msgstr ""
+
+#: Template/Admin/Menus/view.ctp:161
+#: Template/Admin/Users/view.ctp:137
+msgid "view"
+msgstr ""
+
+#: Template/Admin/Users/add.ctp:8
+#: Template/Admin/Users/edit.ctp:8
+msgid "user"
+msgstr ""
+
+#: Template/Admin/Users/add.ctp:12
+#: Template/Admin/Users/edit.ctp:12
+msgid "users"
+msgstr ""
+
+#: Template/Admin/Users/index.ctp:7
+#: Template/Admin/Users/index.ctp:9
+msgid "Users"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:29
+msgid "Username"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:31
+msgid "Password"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:33
+msgid "Email"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:35
+msgid "First Name"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:37
+msgid "Last Name"
+msgstr ""
+
+#: Template/Admin/Users/view.ctp:39
+msgid "Role"
+msgstr ""
+
+#: Template/Cell/Admin/Sidebar/display.ctp:37
+msgid "add"
+msgstr ""
+
+#: Template/Cell/Admin/Sidebar/display.ctp:45
+msgid "clear cache"
+msgstr ""
+
+#: Template/Element/nav-top.ctp:31
 msgid "user image"
 msgstr ""
 
-#: Template/Element/nav-top.ctp:33
+#: Template/Element/nav-top.ctp:37
 msgid "member since"
 msgstr ""
 
-#: Template/Element/nav-top.ctp:40
+#: Template/Element/nav-top.ctp:44
 msgid "profile"
 msgstr ""
 
-#: Template/Element/nav-top.ctp:46
+#: Template/Element/nav-top.ctp:50
 msgid "logout"
-msgstr ""
-
-#: Template/Element/nav-top.ctp:55
-msgid "help"
 msgstr ""
 
 #: Template/Element/paginator.ctp:13

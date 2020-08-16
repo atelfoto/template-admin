@@ -1,22 +1,22 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Menu $menu
+ * @var \App\Model\Entity\User $user
  */
 ?>
 
-<?php $this->assign('title', __d('admin', "menu"));
-$this->assign('icon', 'menus');
-$this->assign('heading', ucfirst(__d("admin", 'Edit')));
+<?php $this->assign('title', __d('admin', "user"));
+$this->assign('icon', 'users');
+$this->assign('heading', ucfirst(__d("admin", 'Add')));
 $this->Breadcrumbs->add([
-    ['title' => __d('admin', 'menus'), "url" => ["action" => "index"]],
-    ['title' => ucfirst(__d("admin", 'Edit'))]
+    ['title' => __d('admin', 'users'), "url" => ["action" => "index"]],
+    ['title' => ucfirst(__d("admin", 'Add'))]
 ]);
 ?>
-<section class="menus form content">
+<section class="users form content">
     <div class="box box-primary card card-default">
     <?= $this->Form->create(
-        $menu,
+        $user,
         [
             'novalidate' => true,
             'type' => 'file',
@@ -58,16 +58,16 @@ $this->Breadcrumbs->add([
             <div class="tab-content">
                 <div class="tab-pane active" id="contenu">
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('alias');
-            echo $this->Form->control('controller');
-            echo $this->Form->control('parent_id', ['options' => $parentMenus, 'empty' => true]);
-            echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-            ?>
+            echo $this->Form->control('username');
+            echo $this->Form->control('password');
+            echo $this->Form->control('email');
+            echo $this->Form->control('first_name');
+            echo $this->Form->control('last_name');
+            echo $this->Form->control('role');
+        ?>
         </div>
         <div class="tab-pane" id="publication">
 			<?php
-            echo $this->Form->control('keywords');
 			echo $this->Form->control(
                 "robots",
                 [
